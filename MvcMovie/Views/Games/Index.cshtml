@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Games Database</h2>
+<h1>Games Database</h1>
 
 <p>
-    <a asp-action="Create">Add a New Game</a>
+    <a asp-action="Create" class="btn btn-primary">Add a New Game</a>
 </p>
 <form asp-controller="Games" asp-action="Index" method="get">
     <p>
@@ -16,11 +16,11 @@
         </select>
 
         Title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="filter" />
+        <input type="submit" value="filter" class="btn-primary" />
     </p>
 </form>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -41,10 +41,10 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
         @foreach (var item in Model.Games) {
         <tr>
-            <td>
+            <td class="col-lg-3">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
@@ -60,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">View More Info</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">View More Info</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
             </td>
         </tr>
 }
